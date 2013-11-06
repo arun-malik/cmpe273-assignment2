@@ -11,16 +11,16 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import edu.sjsu.cmpe.library.dto.LinksDto;
 
 
-@JsonInclude(Include.NON_NULL)
+//@JsonInclude(Include.NON_NULL)
 public class Review extends LinksDto{
 	
 	private static int reviewKey;
 	private int id;
 	
-	@NotNull(message ="Review rating is required field.")
+	//@NotNull(message ="Review rating is required field.")
 	private Rating ratingValue;
 	
-	@NotEmpty(message ="Review comments is required field.")
+	//@NotEmpty(message ="Review comments is required field.")
 	private String comments;
 	
 	public Review() {

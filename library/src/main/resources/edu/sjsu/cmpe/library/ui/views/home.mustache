@@ -54,6 +54,19 @@
     		}
     	
     }
+     
+  var destination = "/topic/04607.book.computer";
+  var client = Stomp.client("ws://54.215.210.214:61613");
+  client.debug = function(str) {
+            $("#debug").append(str + "\n");
+          };
+  client.connect("admin","password",
+    function(frame){
+     	client.subscribe(destination,
+        function(message){
+          alert("Books received from Publisher: "+ message);
+        });
+        });
 });
 
 $(":button").click(function() {

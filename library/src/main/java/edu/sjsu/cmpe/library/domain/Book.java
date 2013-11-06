@@ -28,10 +28,10 @@ public class Book {
 	private static int bookKey;
 	private int isbn;
 	
-	@NotEmpty(message ="title is required field.")
+	//@NotEmpty(message ="title is required field.")
 	private String title;
 	
-	@NotNull(message ="publicaiton date is required field.")
+	//@NotNull(message ="publicaiton date is required field.")
 	private Date publicationDate;
 	
 	private String language;

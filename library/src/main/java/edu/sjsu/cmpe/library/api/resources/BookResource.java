@@ -1,20 +1,27 @@
 package edu.sjsu.cmpe.library.api.resources;
 
-import java.io.IOException;
-import java.util.*;
-
+import java.util.Iterator;
 import javax.validation.Valid;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-
-import org.apache.activemq.transport.stomp.StompConnection;
-
-import com.yammer.dropwizard.config.Configuration;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import com.yammer.metrics.annotation.Timed;
-
 import edu.sjsu.cmpe.library.config.LibraryServiceConfiguration;
-import edu.sjsu.cmpe.library.dto.*;
-import edu.sjsu.cmpe.library.domain.*;
+import edu.sjsu.cmpe.library.domain.Author;
+import edu.sjsu.cmpe.library.domain.Book;
+import edu.sjsu.cmpe.library.domain.Review;
+import edu.sjsu.cmpe.library.dto.BookDto;
+import edu.sjsu.cmpe.library.dto.BooksDto;
+import edu.sjsu.cmpe.library.dto.LinkDto;
+import edu.sjsu.cmpe.library.dto.StompDto;
 import edu.sjsu.cmpe.library.ui.views.HomeView;
 
 @Produces(MediaType.APPLICATION_JSON)
