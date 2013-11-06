@@ -19,7 +19,7 @@ import edu.sjsu.cmpe.library.ui.views.HomeView;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/")
+@Path("/v1/books")
 public class BookResource {
 
 	public BookResource() {
