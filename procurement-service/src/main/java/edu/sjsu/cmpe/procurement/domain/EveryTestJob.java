@@ -6,7 +6,7 @@ import edu.sjsu.cmpe.procurement.dto.LostInventoryDto;
 import edu.sjsu.cmpe.procurement.dto.PublisherDto;
 import edu.sjsu.cmpe.procurement.dto.StompDto;
 
-@Every("30s")
+@Every("300s")
 public class EveryTestJob extends Job {
 
 	@Override
