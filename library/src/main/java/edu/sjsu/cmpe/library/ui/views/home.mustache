@@ -26,8 +26,8 @@
                     <td><img class="img-thumbnail" height="92" width="72" src="{{coverImage}}"></td>
                     <td>{{title}}</td>
                     <td>{{category}}</td>
-                    <td title="status" id="status{{isbn}}">{{#eBookStatus}} {{name}} {{/eBookStatus}} </td>
-                    <td><button id="{{isbn}}"type="button" class="btn btn-primary">Report Lost</button></td>
+                    <td title="eBookStatus" id="status{{isbn}}">{{#eBookStatus}} {{name}} {{/eBookStatus}} </td>
+                    <td><button id="{{isbn}}"type="button" class="btn btn-primary" disabled>Report Lost</button></td>
                 </tr>
             {{/books}}
             </table>
@@ -42,31 +42,28 @@
             
             
             <script>
-            $(document).ready(function(){
-    var elements = $('td[title="status"]');
+ $(document).ready(function(){
+    var elements = $('td[title="eBookStatus"]');
     for( i=0; i<elements.length; i++ ){
-    	var statusIs = elements[i].innerHTML;
-    	var onlyNumberId = elements[i].id.slice("6");
-    	var realId = "#"+onlyNumberId;
-    	if(statusIs == "lost")
+    	var iStatus = elements[i].innerHTML;
+    	var isbnOfBook = elements[i].id.slice("6");
+    	var isbn = "#"+isbnOfBook;
+    	if(iStatus != "lost")
     		{
-    			$(realId).attr("disabled","disabled");
+    			$(isbn).removeAttr("disabled");
     		}
-    	else{
-    		$(realId).removeAttr("disabled");
-    	}
+    	
     }
 });
 
 $(":button").click(function() {
 	var isbn = this.id;
-	var uri = "/library/v1/books/"+isbn+"?status=lost";
 	var btnDisable = "#"+isbn;
 	var eBookStatus = "#status"+isbn;
-	alert('About to report lost on ISBN ' + isbn);
+	alert('Sure !! you lost the book ??? ' + isbn);
 	
 	$.ajax({
-		  url: uri,
+		  url: "/library/v1/books/"+isbn+"?status=lost",
 		  type: 'PUT',
 		  success: function(data) {
 			  $(btnDisable).attr("disabled","disabled");
