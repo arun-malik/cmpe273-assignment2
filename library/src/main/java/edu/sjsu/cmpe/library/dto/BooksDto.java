@@ -49,7 +49,7 @@ public class BooksDto extends LinksDto {
 	public static Book updateBookByISBN(int ISBNKey, String updatedBookStatus) {
 		
 		Book toBeupdatedBook = libraryBooks.get(ISBNKey);
-		toBeupdatedBook.seteBookStatus(updatedBookStatus);
+		toBeupdatedBook.setEbookStatus(updatedBookStatus);
 		return toBeupdatedBook;
 	}
 
@@ -98,7 +98,7 @@ public class BooksDto extends LinksDto {
 	        book.setCategory("computer");
 	        book.setTitle("Java Concurrency in Practice");
             book.setCoverImage("http://goo.gl/N96GJN");
-            book.seteBookStatus("available");
+            book.setEbookStatus("available");
             book.addBookAuthor(auth);
             book.setNumberOfPages(100);
             book.setPublicationDate("10/06/2013");
@@ -109,7 +109,7 @@ public class BooksDto extends LinksDto {
 	        book.setCategory("computer");
 	        book.setTitle("Restful Web Services");
 	        book.setCoverImage("http://goo.gl/ZGmzoJ");
-	        book.seteBookStatus("available");
+	        book.setEbookStatus("available");
 	        book.setPublicationDate("10/06/2013");
 	        book.setNumberOfPages(100);
 	        book.addBookAuthor(auth);

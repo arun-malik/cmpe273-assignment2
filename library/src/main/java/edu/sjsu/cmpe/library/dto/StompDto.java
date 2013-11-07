@@ -2,9 +2,13 @@ package edu.sjsu.cmpe.library.dto;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+
 import org.apache.activemq.transport.stomp.StompConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StompDto {
+	 private static final Logger log = LoggerFactory.getLogger(StompDto.class);
 
 	public static  String stompQueueName;
 	public static  String stompTopicName;
@@ -27,7 +31,7 @@ public class StompDto {
 	{
 
 		try {
-
+			log.info("message = {}", message);
 			createApolloConnection();
 			openApolloConnection();
 			connectApolloBroker();
@@ -35,7 +39,7 @@ public class StompDto {
 			stompConnection.send(stompQueueName, message  );
 			stompConnection.commit("Transaction"); 
 			disconectApolloConnection();
-
+			log.info("successfully sent");
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

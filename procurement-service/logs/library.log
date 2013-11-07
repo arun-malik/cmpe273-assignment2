@@ -826,3 +826,12 @@ INFO  [2013-11-06 06:20:34,787] de.spinscale.dropwizard.jobs.JobManager: Jobs wi
 INFO  [2013-11-06 06:20:34,801] de.spinscale.dropwizard.jobs.JobManager: Jobs with @On annotation: []
 INFO  [2013-11-06 06:20:34,818] org.eclipse.jetty.server.AbstractConnector: Started InstrumentedBlockingChannelConnector@0.0.0.0:8080
 INFO  [2013-11-06 06:20:34,844] org.eclipse.jetty.server.AbstractConnector: Started SocketConnector@0.0.0.0:9000
+INFO  [2013-11-06 06:29:01,421] org.eclipse.jetty.server.Server: Graceful shutdown SocketConnector@0.0.0.0:9000
+INFO  [2013-11-06 06:29:01,422] org.eclipse.jetty.server.Server: Graceful shutdown InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-11-06 06:29:01,423] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-11-06 06:29:01,423] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,file:/Users/malik/Documents/Projects/Git/cmpe273-assignment2/procurement-service/target/classes/}
+INFO  [2013-11-06 06:29:03,475] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,file:/Users/malik/Documents/Projects/Git/cmpe273-assignment2/procurement-service/target/classes/}
+INFO  [2013-11-06 06:29:03,476] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-11-06 06:29:03,577] org.quartz.core.QuartzScheduler: Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down.
+INFO  [2013-11-06 06:29:03,577] org.quartz.core.QuartzScheduler: Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused.
+INFO  [2013-11-06 06:29:03,861] org.quartz.core.QuartzScheduler: Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutdown complete.

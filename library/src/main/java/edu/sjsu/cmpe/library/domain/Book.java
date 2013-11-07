@@ -41,7 +41,7 @@ public class Book {
 	private String coverImage;
 	private String category = "Misc";
 	private int numberOfPages = 100;
-	private BookStatus eBookStatus = BookStatus.Available;
+	private BookStatus ebookStatus = BookStatus.Available;
 	private List<Author> authors;
 	private List<Review> bookReview;
 	
@@ -159,18 +159,18 @@ public class Book {
 	 * @return
 	 */
 	@JsonProperty("status")
-	public BookStatus geteBookStatus() {
-		return eBookStatus;
+	public BookStatus getEbookStatus() {
+		return ebookStatus;
 	}
 
-	public void seteBookStatus(String eBookStatus) {
+	public void setEbookStatus(String eBookStatus) {
 		if(eBookStatus ==null)
 		{
-			this.eBookStatus = BookStatusMapper.get("available");
+			this.ebookStatus = BookStatusMapper.get("available");
 		}
 		else
 		{
-			this.eBookStatus = BookStatusMapper.get(eBookStatus);
+			this.ebookStatus = BookStatusMapper.get(eBookStatus);
 		}
 	}
 
