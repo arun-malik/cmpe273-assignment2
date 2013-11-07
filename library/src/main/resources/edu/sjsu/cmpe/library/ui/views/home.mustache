@@ -46,21 +46,38 @@
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
             <!-- application ui scripts <script src="app.js"></script> -->
             
-            
+            <script src="../assets/js/stomp.js"></script>
             <script>
- $(document).ready(function(){
-    var elements = $('td[title="eBookStatus"]');
-    for( i=0; i<elements.length; i++ ){
-    	var iStatus = elements[i].innerHTML;
-    	var isbnOfBook = elements[i].id.slice("6");
-    	var isbn = "#"+isbnOfBook;
-    	if(iStatus != "lost")
-    		{
-    			$(isbn).removeAttr("disabled");
-    		}
-    	
-    }
-});
+ $(document).ready(
+ 
+ function(){
+ 
+ 	  var url="ws://54.219.156.168:61623";
+	  var login = "admin";
+	  var password = "password";
+	  var destination = "/topic/04607.book.*";
+	  var client = Stomp.client(url);
+
+     var elements = $('td[title="eBookStatus"]');
+	    for( i=0; i<elements.length; i++ ){
+	    	var iStatus = elements[i].innerHTML;
+	    	var isbnOfBook = elements[i].id.slice("6");
+	    	var isbn = "#"+isbnOfBook;
+	    	if(iStatus != "lost")
+	    		{
+	    			$(isbn).removeAttr("disabled");
+	    		}
+	    	}
+    
+	  client.connect(login,password,
+	    function(frame){
+	      alert("Inside connect");
+	      client.debug("connected to Stomp");
+	      client.subscribe(destination,
+	        function(message){
+	          alert(message.body);
+	          window.location.reload(); });});
+    	});
 
 $(":button").click(function() {
 	var isbn = this.id;

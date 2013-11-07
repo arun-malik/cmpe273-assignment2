@@ -31,12 +31,12 @@ public class StompDto {
 	{
 
 		try {
-			log.info("About to send message {} to {}", message, "/queue/foobar");
+			log.info("About to send message {} to {}", message, stompQueueName);
 			createApolloConnection();
 			openApolloConnection();
 			connectApolloBroker();
 			stompConnection.begin("Transaction");
-			stompConnection.send("/queue/foobar", message  );
+			stompConnection.send(stompQueueName, message  );
 			stompConnection.commit("Transaction"); 
 			// disconectApolloConnection();
 			log.info("successfully sent");
