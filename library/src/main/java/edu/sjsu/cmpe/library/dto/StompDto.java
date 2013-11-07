@@ -38,7 +38,7 @@ public class StompDto {
 			stompConnection.begin("Transaction");
 			stompConnection.send(stompQueueName, message  );
 			stompConnection.commit("Transaction"); 
-			disconectApolloConnection();
+			// disconectApolloConnection();
 			log.info("successfully sent");
 
 		} catch (UnknownHostException e) {
