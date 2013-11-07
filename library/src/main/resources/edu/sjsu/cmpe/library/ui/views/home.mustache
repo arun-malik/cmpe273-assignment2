@@ -71,11 +71,11 @@
     
 	  client.connect(login,password,
 	    function(frame){
-	      alert("Inside connect");
-	      client.debug("connected to Stomp");
+	     
+	      
 	      client.subscribe(destination,
 	        function(message){
-	          alert(message.body);
+	          
 	          window.location.reload(); });});
     	});
 
