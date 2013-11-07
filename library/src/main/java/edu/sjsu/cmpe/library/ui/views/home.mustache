@@ -17,6 +17,9 @@
                     	<th>Cover Image</th>
                     	<th>Title</th>
                     	<th>Category</th>
+                    	<th>Language</th>
+                    	<th>Publication Date</th>
+                    	<th>No of Pages</th>
                     	<th>Status</th>
                     	<th>Lost Book ?</th>
                     </tr>
@@ -26,7 +29,10 @@
                     <td><img class="img-thumbnail" height="92" width="72" src="{{coverImage}}"></td>
                     <td>{{title}}</td>
                     <td>{{category}}</td>
-                    <td title="eBookStatus" id="status{{isbn}}">{{#eBookStatus}} {{name}} {{/eBookStatus}} </td>
+                    <td>{{Language}} </td>
+                    <td>{{publicationDate}} </td>
+                    <td>{{numberOfPages}} </td>
+                    <td title="eBookStatus" id="status{{isbn}}">{{eBookStatus}}</td>
                     <td><button id="{{isbn}}"type="button" class="btn btn-primary" disabled>Report Lost</button></td>
                 </tr>
             {{/books}}

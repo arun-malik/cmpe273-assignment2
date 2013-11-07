@@ -15,6 +15,7 @@ import edu.sjsu.cmpe.library.config.LibraryServiceConfiguration;
 import edu.sjsu.cmpe.library.dto.AsyncSubscribe;
 import edu.sjsu.cmpe.library.dto.BooksDto;
 import edu.sjsu.cmpe.library.dto.StompDto;
+import edu.sjsu.cmpe.library.ui.resources.HomeResource;
 
 
 public class LibraryService extends Service<LibraryServiceConfiguration> {
@@ -51,13 +52,10 @@ public class LibraryService extends Service<LibraryServiceConfiguration> {
         BooksDto.addInitialData();
         /** Root API */
         environment.addResource(RootResource.class);
-//        /** Books APIs */
+        /** Books APIs */
         environment.addResource(BookResource.class);
-//        BookRepositoryInterface bookRepository = new BookRepository();
-//        environment.addResource(new BookResource(bookRepository));
-//
-//        /** UI Resources */
-     //   environment.addResource(new HomeResource(bookRepository));
+        /** UI Resources */
+        environment.addResource(HomeResource.class);
 
     }
 }

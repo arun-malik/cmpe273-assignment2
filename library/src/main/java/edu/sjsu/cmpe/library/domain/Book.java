@@ -8,11 +8,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -32,13 +34,14 @@ public class Book {
 	private String title;
 	
 	//@NotNull(message ="publicaiton date is required field.")
-	private Date publicationDate;
-	
-	private String language;
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	private Date publicationDate =new Date();
+	 		
+	private String language = "English";
 	private String coverImage;
-	private String category;
-	private int numberOfPages;
-	private BookStatus eBookStatus;
+	private String category = "Misc";
+	private int numberOfPages = 100;
+	private BookStatus eBookStatus = BookStatus.Available;
 	private List<Author> authors;
 	private List<Review> bookReview;
 	
@@ -109,7 +112,6 @@ public class Book {
 	 * 
 	 * @return publicationDate
 	 */
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	
 	@JsonProperty("publication-date")
 	public String getPublicationDate() {
@@ -118,6 +120,7 @@ public class Book {
 	public void setPublicationDate(String publicationDate) {
 //		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
+			
 			this.publicationDate = dateFormat.parse(publicationDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -230,6 +233,7 @@ public class Book {
 	/**
 	 * @return the coverImage
 	 */
+	@JsonProperty("coverimage")
 	public String getCoverImage() {
 		return coverImage;
 	}
@@ -249,13 +253,10 @@ public class Book {
 	/**
 	 * @return the category
 	 */
+	@JsonProperty("category")
 	public String getCategory() {
 		return category;
 	}
-
-
-
-
 
 	/**
 	 * @param category the category to set

@@ -22,6 +22,11 @@ public class HomeView extends View {
         super("home.mustache");
         this.errorMsg = errorMsg;
     }
+    
+    public HomeView(BooksDto books) {
+        super("home.mustache");
+        this.books = books;
+    }
 
     public List<Book> getBooks() {
         return books.getBooks();

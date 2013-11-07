@@ -89,16 +89,31 @@ public class BooksDto extends LinksDto {
 	
 	public static void addInitialData() {
 			
+			Author auth = new Author();
+			auth.setName("BookAuth1");
+			
+			
+		
 		 	Book book = new Book();
 	        book.setCategory("computer");
 	        book.setTitle("Java Concurrency in Practice");
             book.setCoverImage("http://goo.gl/N96GJN");
+            book.seteBookStatus("available");
+            book.addBookAuthor(auth);
+            book.setNumberOfPages(100);
+            book.setPublicationDate("10/06/2013");
+            book.setLanguage("english");
 	        libraryBooks.put(book.getIsbn(), book);
 
 	        book = new Book();
 	        book.setCategory("computer");
 	        book.setTitle("Restful Web Services");
 	        book.setCoverImage("http://goo.gl/ZGmzoJ");
+	        book.seteBookStatus("available");
+	        book.setPublicationDate("10/06/2013");
+	        book.setNumberOfPages(100);
+	        book.addBookAuthor(auth);
+	        book.setLanguage("english");
 	        libraryBooks.put(book.getIsbn(), book);
 	        
 		}

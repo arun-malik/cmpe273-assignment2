@@ -38,10 +38,10 @@ public class BookResource {
 	 * @return List of all books
 	 */
 	@GET
-	@Timed(name = "list-book")  @Produces(MediaType.TEXT_HTML)
-	public HomeView getBooks() {
+	@Timed(name = "list-book")  //@Produces(MediaType.TEXT_HTML)
+	public Response getBooks() {
 
-		HomeView homeView = new HomeView();
+		// HomeView homeView = new HomeView();
 
 		BooksDto booksListResponse = new BooksDto();
 		try{
@@ -57,14 +57,16 @@ public class BookResource {
 						"/books/" + iBook.getIsbn() + "/reviews", "POST"));
 			}
 
-			homeView.setBooks(booksListResponse);
-			return homeView;
-			//return Response.status(200).entity(booksListResponse).build();
+			//homeView.setBooks(booksListResponse);
+			//return homeView;
+			return Response.status(200).entity(booksListResponse).build();
 
 		}
 		catch(Exception ex)
 		{
-			return new HomeView("Exception in fetching Books from Server : " + ex.getMessage() );
+			//return new HomeView("Exception in fetching Books from Server : " + ex.getMessage() );
+			return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Parameters " + ex.getMessage()).build();
+            
 		}
 		finally
 		{
@@ -83,11 +85,11 @@ public class BookResource {
 	 */
 	@POST
 	@Timed(name="create-book")
-	public HomeView createBook(@Valid Book bookToCreate) {
+	public Response createBook(@Valid Book bookToCreate) {
 		BooksDto bookCreatedResponse = new BooksDto();
 		Book bookSavedResponse = BooksDto.addBookToStorage(bookToCreate);
 
-		HomeView homeView = new HomeView();
+		//HomeView homeView = new HomeView();
 
 		try{
 
@@ -103,15 +105,15 @@ public class BookResource {
 						"/books/" + bookSavedResponse.getIsbn() + "/reviews/", "POST"));
 			}
 
-			//return Response.status(201).entity(bookCreatedResponse).build();
-			homeView.setBook(bookSavedResponse);
-			return homeView;
+			return Response.status(201).entity(bookCreatedResponse).build();
+			//homeView.setBook(bookSavedResponse);
+			//return homeView;
 
 		}
 		catch(Exception ex)
 		{
-			//return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Parameters " + ex.getMessage()).build();
-			return new HomeView("Exception in saving Book : " + ex.getMessage() );
+			return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Parameters " + ex.getMessage()).build();
+			//return new HomeView("Exception in saving Book : " + ex.getMessage() );
 		}
 		finally
 		{
@@ -153,7 +155,18 @@ public class BookResource {
 				bookResponse.addLink(new LinkDto("view-all-reviews",
 						"/books/" +  bookResponse.getBook().getIsbn() + "/reviews/", "GET"));
 			}
-
+//
+//			System.out.println("***********************\n Book Details :" );
+//			System.out.println("ISBN : " + bookResponse.getBook().getIsbn() );
+//			System.out.println("Status : " + bookResponse.getBook().geteBookStatus() );
+//			System.out.println("Title : " + bookResponse.getBook().getTitle() );
+//			System.out.println("Category : " + bookResponse.getBook().getCategory());
+//			System.out.println("CoverImage : " + bookResponse.getBook().getCoverImage() );
+//			System.out.println("Language : " + bookResponse.getBook().getLanguage() );
+//			System.out.println("Pub Date : " + bookResponse.getBook().getPublicationDate() );
+//			System.out.println("Auth : " + bookResponse.getBook().getAuthors() );
+//			System.out.println("Review : " + bookResponse.getBook().getBookRating() );
+			
 			return Response.status(200).entity(bookResponse).build();
 
 		}

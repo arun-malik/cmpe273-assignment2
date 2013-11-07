@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import edu.sjsu.cmpe.library.dto.LinksDto;
 
 
-//@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_NULL)
 public class Review extends LinksDto{
 	
 	private static int reviewKey;
